@@ -1,14 +1,9 @@
 package runner;
 
-import org.junit.runner.RunWith;
+import cucumber.api.cli.Main;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-
-
-@RunWith(Cucumber.class)
-@CucumberOptions(glue= {"stepdef"}, 
-				features= {"src/test/resources/features/parallel/"})
 public class PlainRunner {
-	
+	public static void main(String[] args) {
+		Main.main(new String[]{"--threads", "4","-p","timeline:target/cucumber-parallel-report", "-g", "stepdef", "src/test/resources/features/parallel/"});
+	}
 }
