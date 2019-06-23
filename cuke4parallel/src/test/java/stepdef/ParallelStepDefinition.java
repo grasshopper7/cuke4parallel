@@ -4,8 +4,15 @@ import cucumber.api.java.en.Given;
 
 public class ParallelStepDefinition {
 
-	@Given("the details from {word} are {int}")
-	public void parallelstep(String file, int num) {
-		System.out.println(Thread.currentThread().getId() + " - " + file + " - " +num);
+	@Given("{string} step of scenario {string}")
+	public void parallelScen(String step, String scen) {
+		System.out.println("Thread ID " + Thread.currentThread().getId() + " runs '" + 
+			step + " step' of '" + scen + "' from 'scenarios'.");
+	}
+
+	@Given("{string} step of {string} row of scenario outline")
+	public void parallelScenOut(String step, String row) {
+		System.out.println("Thread ID " + Thread.currentThread().getId() + " runs '" + 
+			step + " step' of '" + row  + " example' from 'scenariooutlines'.");
 	}
 }
